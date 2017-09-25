@@ -5,7 +5,7 @@ import sys
 import getopt
 
 
-def Prior(op1, op2):
+def Prior(op1, op2):#判断运算符优先级
     if op1 == '*' and op2 == '+' or op1 == '*' and op2 == '-':
         return True
     # if op1 == 'x' and op2 == '-':
@@ -17,7 +17,7 @@ def Prior(op1, op2):
     return False
 
 
-def changeToPostfix(exp):
+def changeToPostfix(exp):#把中缀表达式改写成后缀表达式
     stack = []
     postfix = []
     for i in range(len(exp)):
@@ -39,7 +39,7 @@ def changeToPostfix(exp):
     return postfix
 
 
-def CalculatePostfix(exp):
+def CalculatePostfix(exp):#计算后缀表达式的值
     stack = []
     for i in range(len(exp)):
         if type(exp[i]) == int:
@@ -88,7 +88,7 @@ for i in range(quesNums):
     PostfixExp = changeToPostfix(CalculateExp)
     res = CalculatePostfix(PostfixExp)
     if(usrInput == str(res)):
-        print '正确'.decode('utf-8').encode(sys.getfilesystemencoding())
+        print '正确'.decode('utf-8').encode(sys.getfilesystemencoding())#解决中文在控制台乱码的问题
         correct_ans += 1
     else:
         print '错误,正确答案='.decode('utf-8').encode(sys.getfilesystemencoding()) + str(res)
